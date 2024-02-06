@@ -2,31 +2,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+namespace RocketGame.Controllers
 {
-    Rigidbody rb;
-    [SerializeField] float _force;
-    private float yatayHareket;
-    public float hareketHýzý;
-
-    private void Awake()
+    public class PlayerMovement : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-    }
+        Rigidbody rb;
+        [SerializeField] float _force;
+        public float hareketHýzý;
+        private float yatayHareket;
+        private bool _canForceUp;
+        private Fuel _fuel;
 
-    void Start()
-    {
- 
-    }
 
-    void Update()
-    {
-        yatayHareket += Input.GetAxis("Horizontal");
-        rb.rotation = Quaternion.Euler(0f, 0f, yatayHareket*hareketHýzý);
-
-        if (Input.GetKey(KeyCode.W))
+        private void Awake()
         {
-            rb.AddForce(Vector3.up * _force * Time.deltaTime);
+            rb = GetComponent<Rigidbody>();
+            _fuel = GetComponent<Fuel>();
+        }
+
+        void Start()
+        {
+            _canForceUp = true;
+        }
+
+        void Update()
+        {
+            yatayHareket += Input.GetAxis("Horizontal");
+            if (Input.GetKey(KeyCode.W) && !_fuel.IsEmpty)
+            {
+                _canForceUp = true;
+            }
+            else
+            {
+                _canForceUp = false;
+            }
+
+
+
+        }
+
+        private void FixedUpdate()
+        {
+            if (_canForceUp)
+            {
+                rb.AddRelativeForce(Vector3.up * _force * Time.deltaTime);
+                _fuel.FuelDecrease(0.2f);
+            }
+            else
+            {
+                _fuel.FuelIncrease(0.05f);
+            }
+
+            rb.rotation = Quaternion.Euler(0f, 0f, yatayHareket * hareketHýzý);
+
         }
     }
 }
+
+
