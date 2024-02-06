@@ -31,10 +31,12 @@ namespace RocketGame.Controllers
             if (Input.GetKey(KeyCode.W) && !_fuel.IsEmpty)
             {
                 _canForceUp = true;
+                
             }
             else
             {
                 _canForceUp = false;
+                
             }
 
 

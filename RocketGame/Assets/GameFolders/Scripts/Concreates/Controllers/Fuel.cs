@@ -9,16 +9,14 @@ namespace RocketGame.Controllers
         [SerializeField] float _maxFuel = 100f;
         [SerializeField] float _currentFuel;
         public ParticleSystem _particleSystem;
+        
 
         public bool IsEmpty => _currentFuel < 1f;
 
         private void Awake()
         {
             _currentFuel = _maxFuel;
-            if (_particleSystem != null)
-            {
-                _particleSystem.Play();
-            }
+            _particleSystem.Stop();
         }
 
         public void FuelIncrease(float increase)
@@ -26,7 +24,10 @@ namespace RocketGame.Controllers
             _currentFuel += increase;
             _currentFuel = Mathf.Min(_currentFuel, _maxFuel);
 
-            _particleSystem.Stop();
+            if (_particleSystem.isPlaying)
+            {
+                _particleSystem.Stop();
+            }
 
 
         }
@@ -35,7 +36,11 @@ namespace RocketGame.Controllers
         {
             _currentFuel -= decrease;
             _currentFuel = Mathf.Max(_currentFuel, 0f);
-            _particleSystem.Play();
+
+            if (_particleSystem.isStopped)
+            {
+                _particleSystem.Play();
+            }
 
 
         }
