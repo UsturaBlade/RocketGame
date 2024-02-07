@@ -18,7 +18,7 @@ namespace RocketGame.Controllers
             
             PlayerMovement player = other.collider.GetComponent<PlayerMovement>();
 
-            if (player == null) return;
+            if (player == null || !player.CanMove) return;
 
             if(other.GetContact(0).normal.y == -1) //burada playerin finishFloora tam tepeden çarpýp çarpmadýðýna bakýyoruz
             {

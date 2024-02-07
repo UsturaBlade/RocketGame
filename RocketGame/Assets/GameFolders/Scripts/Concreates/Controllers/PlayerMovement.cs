@@ -16,6 +16,7 @@ namespace RocketGame.Controllers
         private bool _canMove;
         private float _leftRight;
 
+        public bool CanMove => _canMove;
 
         private void Awake()
         {

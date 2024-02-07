@@ -13,7 +13,7 @@ namespace RocketGame.Controllers
         {
             PlayerMovement player = other.collider.GetComponent<PlayerMovement>();
 
-            if (player != null)
+            if (player != null && player.CanMove)
             {
                 GameManager.Instance.GameOver();
             }
