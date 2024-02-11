@@ -1,5 +1,7 @@
+using RocketGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 namespace RocketGame.Controllers
@@ -12,6 +14,9 @@ namespace RocketGame.Controllers
         
 
         public bool IsEmpty => _currentFuel < 1f;
+         public float CurrentFuel { get { return _currentFuel; } set { _currentFuel = value; } } 
+
+     
 
         private void Awake()
         {
@@ -29,7 +34,7 @@ namespace RocketGame.Controllers
                 _particleSystem.Stop();
             }
 
-
+            SoundManager.Instance.StopSound(0);
         }
 
         public void FuelDecrease(float decrease)
@@ -42,7 +47,7 @@ namespace RocketGame.Controllers
                 _particleSystem.Play();
             }
 
-
+            SoundManager.Instance.PlaySound(0);
         }
     }
 

@@ -56,7 +56,7 @@ namespace RocketGame.Controllers
             if (_canForceUp)
             {
                 rb.AddRelativeForce(Vector3.up * _force * Time.deltaTime);
-                _fuel.FuelDecrease(0.2f);
+                _fuel.FuelDecrease(0.4f);
             }
             else
             {
