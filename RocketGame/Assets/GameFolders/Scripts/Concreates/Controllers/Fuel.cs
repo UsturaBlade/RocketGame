@@ -1,7 +1,4 @@
 using RocketGame.Managers;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 namespace RocketGame.Controllers

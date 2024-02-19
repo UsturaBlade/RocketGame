@@ -190,9 +190,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3220324022043132787, guid: b3ef6f134ff0f3146ad17b298225228c, type: 3}
+      propertyPath: m_Intensity
+      value: 6.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220324022043132787, guid: b3ef6f134ff0f3146ad17b298225228c, type: 3}
+      propertyPath: m_SpotAngle
+      value: 22.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4612841473578680266, guid: b3ef6f134ff0f3146ad17b298225228c, type: 3}
       propertyPath: m_Name
       value: FollowCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451692024885287314, guid: b3ef6f134ff0f3146ad17b298225228c, type: 3}
+      propertyPath: m_XDamping
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451692024885287314, guid: b3ef6f134ff0f3146ad17b298225228c, type: 3}
+      propertyPath: m_YDamping
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451692024885287314, guid: b3ef6f134ff0f3146ad17b298225228c, type: 3}
+      propertyPath: m_ZDamping
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5600828187249795869, guid: b3ef6f134ff0f3146ad17b298225228c, type: 3}
       propertyPath: m_Lens.FieldOfView
@@ -219,6 +239,10 @@ PrefabInstance:
     - target: {fileID: 5158916703206703648, guid: 66efa6ab00a9d4144a248f59e06d409e, type: 3}
       propertyPath: m_Name
       value: GameLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158916703206703648, guid: 66efa6ab00a9d4144a248f59e06d409e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5550784520055184642, guid: 66efa6ab00a9d4144a248f59e06d409e, type: 3}
       propertyPath: m_LocalPosition.x

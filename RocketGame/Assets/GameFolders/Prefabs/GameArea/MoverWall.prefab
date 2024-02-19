@@ -13,16 +13,20 @@ PrefabInstance:
       value: MoverWall
       objectReference: {fileID: 0}
     - target: {fileID: 4745305942954004309, guid: e3591d795ff12864c80344aed6f73ffa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745305942954004309, guid: e3591d795ff12864c80344aed6f73ffa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -11.35
       objectReference: {fileID: 0}
     - target: {fileID: 4745305942954004309, guid: e3591d795ff12864c80344aed6f73ffa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5.22
       objectReference: {fileID: 0}
     - target: {fileID: 4745305942954004309, guid: e3591d795ff12864c80344aed6f73ffa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 41.69105
       objectReference: {fileID: 0}
     - target: {fileID: 4745305942954004309, guid: e3591d795ff12864c80344aed6f73ffa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -78,5 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad82a013fa49b734f825f6d193eb9af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _direction: {x: 0, y: 0, z: 0}
+  _direction: {x: 0, y: -5, z: 0}
   _factor: 0
+  _speed: 5

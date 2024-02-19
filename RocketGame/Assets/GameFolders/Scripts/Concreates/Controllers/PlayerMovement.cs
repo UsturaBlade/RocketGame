@@ -2,11 +2,14 @@ using RocketGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RocketGame.Controllers
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [SerializeField] GameObject _yoke;
+        [SerializeField] Slider _powerSlider;
         Rigidbody rb;
         [SerializeField] float _force;
         public float hareketHýzý;
@@ -14,7 +17,6 @@ namespace RocketGame.Controllers
         private bool _canForceUp;
         private Fuel _fuel;
         private bool _canMove;
-        private float _leftRight;
 
         public bool CanMove => _canMove;
 
@@ -28,15 +30,22 @@ namespace RocketGame.Controllers
         {
             _canForceUp = true;
             _canMove = true;
-            _leftRight = 1;
+
         }
 
         void Update()
         {
             if (!_canMove) return;
 
-            yatayHareket += (Input.GetAxis("Horizontal") * _leftRight);
-            if (Input.GetKey(KeyCode.W) && !_fuel.IsEmpty)
+            //gameObject.transform.rotation = new Quaternion(_yoke.transform.rotation.x, _yoke.transform.rotation.y, _yoke.transform.rotation.z, -_yoke.transform.rotation.w);
+
+
+
+
+              yatayHareket += (Input.GetAxis("Horizontal") );    
+            
+            
+            if (Input.GetKey(KeyCode.W) && !_fuel.IsEmpty)       
             {
                 _canForceUp = true;
                 
@@ -46,6 +55,17 @@ namespace RocketGame.Controllers
                 _canForceUp = false;
                 
             }
+            
+            /*
+            if(_powerSlider.value > 0 && !_fuel.IsEmpty)
+            {
+                _canForceUp = true;
+            }
+            else
+            {
+                _canForceUp = false;
+            }
+            */
 
 
 
@@ -55,15 +75,19 @@ namespace RocketGame.Controllers
         {
             if (_canForceUp)
             {
-                rb.AddRelativeForce(Vector3.up * _force * Time.deltaTime);
-                _fuel.FuelDecrease(0.4f);
+                //rb.AddRelativeForce(Vector3.up * _force * Time.deltaTime);
+
+                rb.AddRelativeForce(0f, _force * Time.deltaTime, 0f);
+
+                
+                _fuel.FuelDecrease(_powerSlider.value);
             }
             else
             {
                 _fuel.FuelIncrease(0.05f);
             }
 
-            rb.rotation = Quaternion.Euler(0f, 0f, yatayHareket * hareketHýzý);
+             rb.rotation = Quaternion.Euler(0f, 0f, yatayHareket * hareketHýzý);   //  YATAY HAREKET WASD   artýk yoke ile döndürdüðümüz için gerek yok
 
         }
 
@@ -83,7 +107,6 @@ namespace RocketGame.Controllers
         {
             _canMove = false;
             _canForceUp = false;
-            _leftRight = 0f;
             _fuel.FuelIncrease(0f);
         }
     }
